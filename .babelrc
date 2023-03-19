@@ -1,0 +1,6 @@
+{
+	// Los presets son plugins que se ejecutan en orden
+	"presets": [["@babel/preset-env"]],
+	// Los plugins se ejecutan en el orden que se encuentran
+	"plugins": [["@babel/plugin-transform-runtime"]]
+}

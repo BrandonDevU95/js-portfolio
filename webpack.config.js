@@ -16,4 +16,19 @@ module.exports = {
 		//Aquí se definen las extensiones que se van a utilizar
 		extensions: ['.js'],
 	},
+	module: {
+		rules: [
+			{
+				// Los test son expresiones regulares que van a reconocer los archivos que se van a utilizar
+				// La exprecion ".m" nos indica que va a trabajar con archivos moduel o ".js" que va a trabajar con archivos js
+				test: /\.m?js$/,
+				// Aquí se define que se van a excluir los archivos de node_modules
+				exclude: /node_modules/,
+				use: {
+					// Aquí se define que loader se va a utilizar
+					loader: 'babel-loader',
+				},
+			},
+		],
+	},
 };
