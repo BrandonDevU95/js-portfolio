@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	//Este es el punto de entrada de la aplicación
@@ -31,4 +32,15 @@ module.exports = {
 			},
 		],
 	},
+	plugins: [
+		// Aquí se define que plugin se va a utilizar
+		new HtmlWebpackPlugin({
+			// Aquí se define el template que se va a utilizar
+			inject: true,
+			// Aquí se define la ruta del template que se esta usando
+			template: './public/index.html',
+			// Aquí se define el nombre del archivo de salida
+			filename: './index.html',
+		}),
+	],
 };
