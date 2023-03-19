@@ -14,6 +14,7 @@ module.exports = {
 		// __dirname es una variable global que contiene la ruta del archivo actual
 		// resolve une dos rutas
 		path: path.resolve(__dirname, 'dist'),
+		assetModuleFilename: 'assets/images/[hash][ext][query]',
 	},
 	resolve: {
 		//Aquí se definen las extensiones que se van a utilizar
@@ -45,6 +46,28 @@ module.exports = {
 				// Aquí se define que se va a trabajar con archivos de tipo imagen
 				test: /\.png/,
 				type: 'asset/resource',
+			},
+			{
+				// Aquí se define que se va a trabajar con archivos de tipo fuente
+				test: /\.(woff|woff2)$/,
+				use: {
+					loader: 'url-loader',
+					options: {
+						// Aquí se define el limite de peso del archivo
+						limit: 10000,
+						// Aquí se define el tipo de archivo
+						mimetype: 'application/font-woff',
+						// Aquí se define la ruta de salida
+						name: '[name].[ext]',
+						// Aquí se define la ruta de salida
+						outputPath: './assets/fonts/',
+						// Aquí se define la ruta publica
+						publicPath: './assets/fonts/',
+						// Aquí se define si se va a usar o no un hash
+						// en el nombre del archivo
+						esModule: false,
+					},
+				},
 			},
 		],
 	},
