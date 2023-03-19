@@ -41,6 +41,11 @@ module.exports = {
 					'stylus-loader',
 				],
 			},
+			{
+				// Aquí se define que se va a trabajar con archivos de tipo imagen
+				test: /\.png/,
+				type: 'asset/resource',
+			},
 		],
 	},
 	plugins: [
