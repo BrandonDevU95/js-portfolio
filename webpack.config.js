@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	//Este es el punto de entrada de la aplicación
@@ -30,6 +31,15 @@ module.exports = {
 					loader: 'babel-loader',
 				},
 			},
+			{
+				// Aquí se define que se va a trabajar con archivos css
+				test: /\.css|.styl$/i,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'stylus-loader',
+				],
+			},
 		],
 	},
 	plugins: [
@@ -42,5 +52,7 @@ module.exports = {
 			// Aquí se define el nombre del archivo de salida
 			filename: './index.html',
 		}),
+		// Creamos una instancia de MiniCssExtractPlugin
+		new MiniCssExtractPlugin(),
 	],
 };
