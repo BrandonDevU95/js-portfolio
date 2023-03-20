@@ -21,6 +21,13 @@ module.exports = {
 	resolve: {
 		//Aquí se definen las extensiones que se van a utilizar
 		extensions: ['.js'],
+		//Aquí se definen los alias que se van a utilizar
+		alias: {
+			'@utils': path.resolve(__dirname, 'src/utils/'),
+			'@templates': path.resolve(__dirname, 'src/templates/'),
+			'@styles': path.resolve(__dirname, 'src/styles/'),
+			'@images': path.resolve(__dirname, 'src/assets/images/'),
+		},
 	},
 	module: {
 		rules: [
@@ -64,7 +71,7 @@ module.exports = {
 						// Aquí se define la ruta de salida
 						outputPath: './assets/fonts/',
 						// Aquí se define la ruta publica
-						publicPath: './assets/fonts/',
+						publicPath: '../assets/fonts/',
 						// Aquí se define si se va a usar o no un hash
 						// en el nombre del archivo
 						esModule: false,
