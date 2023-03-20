@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	//Este es el punto de entrada de la aplicación
@@ -107,6 +108,7 @@ module.exports = {
 			],
 		}),
 		new Dotenv(),
+		new CleanWebpackPlugin(),
 	],
 	// Optimización de los archivos
 	optimization: {
