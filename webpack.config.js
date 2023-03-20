@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
 	//Este es el punto de entrada de la aplicación
@@ -9,7 +11,7 @@ module.exports = {
 	//Aquí se define el punto de salida de la aplicación
 	output: {
 		//Aquí se define el nombre del archivo de salida
-		filename: 'main.js',
+		filename: '[name].[contenthash].js',
 		//Aquí se define la ruta de salida
 		// __dirname es una variable global que contiene la ruta del archivo actual
 		// resolve une dos rutas
@@ -82,7 +84,10 @@ module.exports = {
 			filename: './index.html',
 		}),
 		// Creamos una instancia de MiniCssExtractPlugin
-		new MiniCssExtractPlugin(),
+		new MiniCssExtractPlugin({
+			// Aquí se define el nombre del archivo de salida
+			filename: 'assets/[name].[contenthash].css',
+		}),
 		new CopyPlugin({
 			patterns: [
 				{
@@ -94,4 +99,11 @@ module.exports = {
 			],
 		}),
 	],
+	// Optimización de los archivos
+	optimization: {
+		// Minimizar los archivos
+		minimize: true,
+		// Minimizar los archivos css y js
+		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+	},
 };
