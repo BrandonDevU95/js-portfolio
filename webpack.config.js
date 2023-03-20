@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	//Este es el punto de entrada de la aplicación
@@ -105,6 +106,7 @@ module.exports = {
 				},
 			],
 		}),
+		new Dotenv(),
 	],
 	// Optimización de los archivos
 	optimization: {
